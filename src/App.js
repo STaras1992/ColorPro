@@ -1,25 +1,15 @@
-import logo from './logo.svg';
 import './App.css';
+import Palette from './components/Palette.js';
+import seedColors from './utills/seedColors.js';
+import { generatePalette } from './utills/colorHelpers.js';
 
-function App() {
+const App = () => {
+  console.log(generatePalette(seedColors[4]));
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <Palette palette={generatePalette(seedColors[4])} />
     </div>
   );
-}
+};
 
 export default App;
