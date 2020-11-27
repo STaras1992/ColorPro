@@ -2,6 +2,7 @@ import React from 'react';
 import Slider from 'rc-slider';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
+import { Link } from 'react-router-dom';
 
 import { HEX, RGB, RGBA } from '../constants/formats.js';
 
@@ -12,7 +13,9 @@ const Navbar = ({ sliderLevel, updateLevel, format, updateFormat }) => {
   console.log(format);
   return (
     <header className='navbar'>
-      <div className='logo'>Logo </div>
+      <div className='logo'>
+        <Link to='/'>Home</Link>
+      </div>
       <div className='slider-container'>
         <span> Level:{sliderLevel} </span>
         <div className='slider'>

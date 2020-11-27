@@ -7,16 +7,16 @@ import { generatePalette } from './utills/colorHelpers.js';
 
 const App = () => {
   const findPalette = (id) => {
-    seedColors.find((palette) => {
+    return seedColors.find((palette) => {
       return palette.id === id;
     });
   };
   return (
     <Switch>
-      <Route exact path='/' render={() => <PaletteList />} />
+      <Route exact path='/' render={() => <PaletteList paletts={seedColors} />} />
       <Route
         exact
-        path='/:id'
+        path='/palette/:id'
         render={(routeProps) => <Palette palette={generatePalette(findPalette(routeProps.match.params.id))} />}
       />
     </Switch>
