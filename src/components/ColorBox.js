@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import './ColorBox.css';
+import './styles/ColorBox.css';
 
 const ColorBox = ({ color, colorName }) => {
   const [isCopied, setIsCopied] = useState(false);

@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 5vh;
+}
+
+.logo {
+  margin-right: 15px;
+  padding: 0 13px;
+  font-size: 22px;
+  background-color: rgb(240, 229, 229);
+  font-family: Roboto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.slider {
+  width: 340px;
+  margin: 0 10;
+  display: inline-block;
+}
+
+.select-container {
+  margin-left: auto;
+  margin-right: 20px;
+}
