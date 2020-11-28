@@ -6,21 +6,8 @@ import Snackbar from '@material-ui/core/Snackbar';
 import { withStyles } from '@material-ui/styles';
 
 import { HEX, RGB, RGBA } from '../constants/formats.js';
-
+import styles from './styles/PaletteStyles.js';
 import 'rc-slider/assets/index.css';
-import './styles/Palette.css';
-
-const styles = {
-  palette: {
-    height: '100vh',
-    display: 'flex',
-    flexDirection: 'column',
-  },
-
-  paletteColors: {
-    height: '90vh',
-  },
-};
 
 const Palette = ({ palette, classes }) => {
   const [level, setLevel] = useState(500);

@@ -2,34 +2,7 @@ import React from 'react';
 import MiniPalette from './MiniPalette.js';
 import { withStyles } from '@material-ui/styles';
 import { Link } from 'react-router-dom';
-
-const styles = {
-  root: {
-    backgroundColor: 'blue',
-    height: '100vh',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'flex-start',
-  },
-  container: {
-    width: '50%',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-  },
-  nav: {
-    display: 'flex',
-    width: '100%',
-    justifyContent: 'space-between',
-  },
-  palettes: {
-    boxSizing: 'border-box',
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3,30%)',
-    gridGap: '5%',
-  },
-};
+import styles from './styles/PaletteListStyles.js';
 
 const PaletteList = ({ paletts, classes, history }) => {
   const goToPalette = (id) => {

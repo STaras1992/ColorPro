@@ -3,22 +3,25 @@ import Slider from 'rc-slider';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
 
 import { HEX, RGB, RGBA } from '../constants/formats.js';
 
+import styles from './styles/NavbarStyles.js';
 import 'rc-slider/assets/index.css';
-import './styles/Navbar.css';
 
-const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorPalette }) => {
+const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorPalette, classes }) => {
   return (
-    <header className='navbar'>
-      <div className='logo'>
-        <Link to='/'>Home</Link>
+    <header className={classes.navbar}>
+      <div className={classes.logo}>
+        <Link style={{ textDecoration: 'none' }} to='/'>
+          Home
+        </Link>
       </div>
       {!isSingleColorPalette && (
-        <div className='slider-container'>
+        <div>
           <span> Level:{sliderLevel} </span>
-          <div className='slider'>
+          <div className={classes.slider}>
             <Slider
               defaultValue={sliderLevel}
               min={100}
@@ -29,7 +32,7 @@ const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorP
           </div>
         </div>
       )}
-      <div className='select-container'>
+      <div className={classes.selectContainer}>
         <Select value={format} onChange={updateFormat}>
           <MenuItem value={HEX}>HEX</MenuItem>
           <MenuItem value={RGB}>RGB</MenuItem>
@@ -40,4 +43,4 @@ const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorP
   );
 };
 
-export default Navbar;
+export default withStyles(styles)(Navbar);

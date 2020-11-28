@@ -1,15 +1,15 @@
 import React from 'react';
+import { withStyles } from '@material-ui/styles';
+import styles from './styles/FooterStyles.js';
 
-import './styles/Footer.css';
-
-const Footer = ({ paletteName }) => {
+const Footer = ({ paletteName, classes }) => {
   return (
-    <div className='footer'>
-      <div className='palette-name'>
+    <div className={classes.footer}>
+      <div className={classes.footerTitle}>
         <span>{paletteName}</span>
       </div>
     </div>
   );
 };
 
-export default Footer;
+export default withStyles(styles)(Footer);
