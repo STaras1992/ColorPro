@@ -3,13 +3,26 @@ import Navbar from './Navbar.js';
 import Footer from './Footer.js';
 import ColorBox from './ColorBox';
 import Snackbar from '@material-ui/core/Snackbar';
+import { withStyles } from '@material-ui/styles';
 
 import { HEX, RGB, RGBA } from '../constants/formats.js';
 
 import 'rc-slider/assets/index.css';
 import './styles/Palette.css';
 
-const Palette = ({ palette }) => {
+const styles = {
+  palette: {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  paletteColors: {
+    height: '90vh',
+  },
+};
+
+const Palette = ({ palette, classes }) => {
   const [level, setLevel] = useState(500);
   const [format, setFormat] = useState(HEX);
   const [popUpOpen, setPopUpOpen] = useState(false);
@@ -39,7 +52,7 @@ const Palette = ({ palette }) => {
   }, [format]);
 
   return (
-    <div className='palette'>
+    <div className={classes.palette}>
       <Navbar
         sliderLevel={level}
         format={format}
@@ -47,8 +60,8 @@ const Palette = ({ palette }) => {
         updateFormat={updateColorFormat}
         isSingleColorPalette={false}
       />
-      <div className='palette-colors'>{colorBoxes}</div>
-      <div className='snackbar'>
+      <div className={classes.paletteColors}>{colorBoxes}</div>
+      <div>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
@@ -64,4 +77,4 @@ const Palette = ({ palette }) => {
   );
 };
 
-export default Palette;
+export default withStyles(styles)(Palette);

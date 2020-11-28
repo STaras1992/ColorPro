@@ -4,11 +4,56 @@ import Footer from './Footer.js';
 import ColorBox from './ColorBox';
 import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
+import { withStyles } from '@material-ui/styles';
 
 import { getShades } from '../utills/colorHelpers.js';
 import { HEX, RGB, RGBA } from '../constants/formats.js';
 
-const SingleColorPalette = ({ colorId, palette }) => {
+const styles = {
+  palette: {
+    height: '100vh',
+    display: 'flex',
+    flexDirection: 'column',
+  },
+
+  paletteColors: {
+    height: '90vh',
+  },
+
+  goBackBox: {
+    background: 'black',
+    height: '50%',
+    width: '20%',
+    display: 'inline-block',
+    position: 'relative',
+    margin: '0 auto',
+    marginBottom: '-4.5px',
+  },
+
+  backButton: {
+    width: '100px',
+    height: '30px',
+    top: '50%',
+    left: '50%',
+    marginLeft: '-50px',
+    marginTop: '-15px',
+    textAlign: 'center',
+    outline: 'none',
+    background: 'rgba(255, 255, 255, 0.3)',
+    fontSize: '1rem',
+    lineHeight: '30px',
+    color: 'white',
+    textTransform: 'uppercase',
+    border: 'none',
+    opacity: '1',
+    position: 'absolute',
+    cursor: 'pointer',
+    display: 'inline-block',
+    textDecoration: 'none',
+  },
+};
+
+const SingleColorPalette = ({ colorId, palette, classes }) => {
   const [format, setFormat] = useState(HEX);
   const [popUpOpen, setPopUpOpen] = useState(false);
 
@@ -27,17 +72,17 @@ const SingleColorPalette = ({ colorId, palette }) => {
   }, [format]);
 
   return (
-    <div className='palette single-color-palette'>
+    <div className={classes.palette}>
       <Navbar format={format} updateFormat={updateColorFormat} isSingleColorPalette={true} />
-      <div className='palette-colors'>
+      <div className={classes.paletteColors}>
         {colorBoxes}
-        <div className='go-back colorBox'>
-          <Link to={`/palette/${palette.id}`} className='back-button'>
+        <div className={classes.goBackBox}>
+          <Link to={`/palette/${palette.id}`} className={classes.backButton}>
             Go Back
           </Link>
         </div>
       </div>
-      <div className='snackbar'>
+      <div>
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
@@ -53,4 +98,4 @@ const SingleColorPalette = ({ colorId, palette }) => {
   );
 };
 
-export default SingleColorPalette;
+export default withStyles(styles)(SingleColorPalette);
