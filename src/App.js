@@ -1,10 +1,14 @@
-import './App.css';
+import React from 'react';
+import { Route, Switch } from 'react-router-dom';
+
 import Palette from './components/Palette.js';
 import PaletteList from './components/PaletteList.js';
-import { Route, Switch } from 'react-router-dom';
+import SingleColorPalette from './components/SingleColorPalette.js';
+import CustomPalette from './components/CustomPalette.js';
+
 import seedColors from './utills/seedColors.js';
 import { generatePalette } from './utills/colorHelpers.js';
-import SingleColorPalette from './components/SingleColorPalette.js';
+import './App.css';
 
 const App = (props) => {
   console.log(window.location.pathname);
@@ -16,6 +20,7 @@ const App = (props) => {
   return (
     <Switch>
       <Route exact path='/' render={(routeProps) => <PaletteList paletts={seedColors} {...routeProps} />} />
+      <Route exact path='/palette/new' render={() => <CustomPalette />} />
       <Route
         exact
         path='/palette/:id'

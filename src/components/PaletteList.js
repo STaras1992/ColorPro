@@ -16,6 +16,7 @@ const PaletteList = ({ paletts, classes, history }) => {
       <div className={classes.container}>
         <nav className={classes.nav}>
           <h1>Color Palettes</h1>
+          <Link to='/palette/new'>Create palette</Link>
         </nav>
         <div className={classes.palettes}>{miniPallets}</div>
       </div>
