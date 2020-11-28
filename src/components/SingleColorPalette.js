@@ -1,33 +1,21 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from './Navbar.js';
 import Footer from './Footer.js';
 import ColorBox from './ColorBox';
 import Snackbar from '@material-ui/core/Snackbar';
+import { Link } from 'react-router-dom';
 
+import { getShades } from '../utills/colorHelpers.js';
 import { HEX, RGB, RGBA } from '../constants/formats.js';
 
-import 'rc-slider/assets/index.css';
-import './styles/Palette.css';
-
-const Palette = ({ palette }) => {
-  const [level, setLevel] = useState(500);
+const SingleColorPalette = ({ colorId, palette }) => {
   const [format, setFormat] = useState(HEX);
   const [popUpOpen, setPopUpOpen] = useState(false);
 
-  const colorBoxes = palette.colors[level].map((color) => (
-    <ColorBox
-      key={color.name}
-      color={color.hex}
-      colorName={color.name}
-      paletteId={palette.id}
-      colorId={color.id}
-      isSingleColor={false}
-    />
+  const shades = getShades(palette, colorId);
+  const colorBoxes = shades.map((color) => (
+    <ColorBox key={color.name} colorName={color.name} color={color.hex} isSingleColor={true} />
   ));
-
-  const updateSliderLevel = (newLevel) => {
-    setLevel(newLevel);
-  };
 
   const updateColorFormat = (event) => {
     setFormat(event.target.value);
@@ -39,15 +27,16 @@ const Palette = ({ palette }) => {
   }, [format]);
 
   return (
-    <div className='palette'>
-      <Navbar
-        sliderLevel={level}
-        format={format}
-        updateLevel={updateSliderLevel}
-        updateFormat={updateColorFormat}
-        isSingleColorPalette={false}
-      />
-      <div className='palette-colors'>{colorBoxes}</div>
+    <div className='palette single-color-palette'>
+      <Navbar format={format} updateFormat={updateColorFormat} isSingleColorPalette={true} />
+      <div className='palette-colors'>
+        {colorBoxes}
+        <div className='go-back colorBox'>
+          <Link to={`/palette/${palette.id}`} className='back-button'>
+            Go Back
+          </Link>
+        </div>
+      </div>
       <div className='snackbar'>
         <Snackbar
           anchorOrigin={{
@@ -56,7 +45,7 @@ const Palette = ({ palette }) => {
           }}
           open={popUpOpen}
           message={<span in='messagePopUp'>{`Color format changed to ${format.toUpperCase()}`}</span>}
-          contentProps={{ 'aria-describedby': 'messagePopUp' }}
+          contentProps={{ 'aria-descrybedby': 'messagePopUp' }}
         />
       </div>
       <Footer paletteName={palette.paletteName} />
@@ -64,4 +53,4 @@ const Palette = ({ palette }) => {
   );
 };
 
-export default Palette;
+export default SingleColorPalette;

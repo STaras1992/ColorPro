@@ -5,7 +5,7 @@ import './styles/Footer.css';
 const Footer = ({ paletteName }) => {
   return (
     <div className='footer'>
-      <div palette-name>
+      <div className='palette-name'>
         <span>{paletteName}</span>
       </div>
     </div>

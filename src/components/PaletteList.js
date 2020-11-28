@@ -31,13 +31,18 @@ const styles = {
   },
 };
 
-const PaletteList = ({ paletts, classes }) => {
-  const miniPallets = paletts.map((palette) => <MiniPalette {...palette} />);
+const PaletteList = ({ paletts, classes, history }) => {
+  const goToPalette = (id) => {
+    history.push(`palette/${id}`);
+  };
+
+  const miniPallets = paletts.map((palette) => <MiniPalette key={palette.id} {...palette} handleClick={goToPalette} />);
+
   return (
     <div className={classes.root}>
       <div className={classes.container}>
         <nav className={classes.nav}>
-          <h1>Colors Palettes</h1>
+          <h1>Color Palettes</h1>
         </nav>
         <div className={classes.palettes}>{miniPallets}</div>
       </div>

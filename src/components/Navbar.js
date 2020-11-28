@@ -9,25 +9,26 @@ import { HEX, RGB, RGBA } from '../constants/formats.js';
 import 'rc-slider/assets/index.css';
 import './styles/Navbar.css';
 
-const Navbar = ({ sliderLevel, updateLevel, format, updateFormat }) => {
-  console.log(format);
+const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorPalette }) => {
   return (
     <header className='navbar'>
       <div className='logo'>
         <Link to='/'>Home</Link>
       </div>
-      <div className='slider-container'>
-        <span> Level:{sliderLevel} </span>
-        <div className='slider'>
-          <Slider
-            defaultValue={sliderLevel}
-            min={100}
-            max={900}
-            step={100}
-            onAfterChange={(level) => updateLevel(level)}
-          />
+      {!isSingleColorPalette && (
+        <div className='slider-container'>
+          <span> Level:{sliderLevel} </span>
+          <div className='slider'>
+            <Slider
+              defaultValue={sliderLevel}
+              min={100}
+              max={900}
+              step={100}
+              onAfterChange={(level) => updateLevel(level)}
+            />
+          </div>
         </div>
-      </div>
+      )}
       <div className='select-container'>
         <Select value={format} onChange={updateFormat}>
           <MenuItem value={HEX}>HEX</MenuItem>
