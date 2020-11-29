@@ -16,10 +16,12 @@ import Button from '@material-ui/core/Button';
 import DraggableColorBox from './DraggableColorBox.js';
 
 import { ChromePicker } from 'react-color';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 //import styles from './styles/CustomPaletteStyles.js';
 
 const drawerWidth = 400;
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -61,7 +63,7 @@ const useStyles = makeStyles((theme) => ({
   },
   content: {
     flexGrow: 1,
-    height: 'calc(100vh-64px)',
+    height: '90vh',
     padding: theme.spacing(3),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -81,7 +83,8 @@ const useStyles = makeStyles((theme) => ({
 const CustomPalette = () => {
   const classes = useStyles();
   const [open, setOpen] = useState(false);
-  const [newColor, setNewColor] = useState('#FF0000');
+  const [newColor, setNewColor] = useState('');
+  const [newName, setNewName] = useState('');
   const [paletteColors, setPaletteColors] = useState([]);
 
   const handleDrawerOpen = () => {
@@ -96,17 +99,39 @@ const CustomPalette = () => {
     setNewColor(color);
   };
 
+  const handleNameChange = (e) => {
+    setNewName(e.target.value);
+  };
+
   const addNewColor = (e) => {
     let colors = [...paletteColors];
-    colors.push(newColor);
+    colors.push({ color: newColor.hex, name: newName });
     setPaletteColors(colors);
   };
 
   useEffect(() => {
-    console.log(paletteColors);
-  }, [paletteColors]);
+    ValidatorForm.addValidationRule('isColorNameUnique', (value) => {
+      return paletteColors.every((color) => {
+        return color.name !== value;
+      });
+    });
 
-  const colorBoxes = paletteColors.map((color) => <DraggableColorBox key={color.hex} color={color.hex} />);
+    ValidatorForm.addValidationRule('isColorUnique', () => {
+      return paletteColors.every((color) => {
+        console.log(`color in pallete:${color.color}, newColor:${newColor.hex}`);
+        return color.color !== newColor.hex;
+      });
+    });
+
+    return () => {
+      ValidatorForm.removeValidationRule('isColorNameUnique');
+      ValidatorForm.removeValidationRule('isColorUnique');
+    };
+  }, [paletteColors, newColor]);
+
+  const colorBoxes = paletteColors.map((color) => (
+    <DraggableColorBox key={color.name} color={color.color} name={color.name} />
+  ));
 
   return (
     <div className={classes.root}>
@@ -154,9 +179,25 @@ const CustomPalette = () => {
           </Button>
         </div>
         <ChromePicker color={newColor} onChange={handleColorChange} />
-        <Button variant='contained' color='primary' style={{ backgroundColor: newColor.hex }} onClick={addNewColor}>
+        <ValidatorForm onSubmit={addNewColor}>
+          <TextValidator
+            value={newName}
+            onChange={handleNameChange}
+            validators={['required', 'isColorNameUnique', 'isColorUnique']}
+            errorMessages={['Color name required', 'Color name already used', 'Color alrady in the palette']}
+          />
+          <Button
+            type='submit'
+            variant='contained'
+            color='primary'
+            style={{ backgroundColor: newColor.hex, marginTop: '10px' }}
+          >
+            Add color
+          </Button>
+        </ValidatorForm>
+        {/* <Button variant='contained' color='primary' style={{ backgroundColor: newColor.hex }} onClick={addNewColor}>
           Add color
-        </Button>
+        </Button> */}
         <Divider />
       </Drawer>
       <main
