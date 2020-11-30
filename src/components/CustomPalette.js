@@ -1,91 +1,24 @@
 import React, { useEffect, useState } from 'react';
 
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
 
 import DraggableColorList from './DraggableColorList.js';
+import CustomPaletteNavbar from './CustomPaletteNavbar.js';
+import ColorPickerForm from './ColorPickerForm.js';
 
 import { arrayMove } from 'react-sortable-hoc';
-import { ChromePicker } from 'react-color';
-import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+import { ValidatorForm } from 'react-material-ui-form-validator';
 
-import { MAX_PALETTE_SIZE } from '../constants/measures.js';
+import styles from './styles/CustomPaletteStyles.js';
 
-//import styles from './styles/CustomPaletteStyles.js';
-
-const drawerWidth = 400;
-const MAX_COLORS = 20;
-
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-  },
-  appBar: {
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  appBarShift: {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: drawerWidth,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
-  hide: {
-    display: 'none',
-  },
-  drawer: {
-    width: drawerWidth,
-    flexShrink: 0,
-  },
-  drawerPaper: {
-    width: drawerWidth,
-  },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-end',
-  },
-  content: {
-    flexGrow: 1,
-    height: '80vh',
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginLeft: -drawerWidth,
-  },
-  contentShift: {
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginLeft: 0,
-  },
-}));
-
-const CustomPalette = ({ savePalette, palettes, history }) => {
-  const classes = useStyles();
+const CustomPalette = ({ classes, savePalette, palettes, history }) => {
   const [open, setOpen] = useState(false);
   const [newColor, setNewColor] = useState('');
   const [newColorName, setNewColorName] = useState('');
@@ -181,47 +114,16 @@ const CustomPalette = ({ savePalette, palettes, history }) => {
   }, [palettes, newPaletteName]);
 
   <DraggableColorList paletteColors={paletteColors} removeColor={removeColor} />;
-  //   const colorBoxes = paletteColors.map((color) => (
-  //     <DraggableColorBox key={color.name} color={color.color} name={color.name} deleteBox={removeColor} />
-  //   ));
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position='fixed'
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            onClick={handleDrawerOpen}
-            edge='start'
-            className={clsx(classes.menuButton, open && classes.hide)}
-          >
-            <MenuIcon />
-          </IconButton>
-          <ValidatorForm onSubmit={saveCurrentPalette}>
-            <TextValidator
-              label='Palette Name'
-              name='newPaletteName'
-              value={newPaletteName}
-              onChange={handlePaletteNameChange}
-              validators={['required', 'isPaletteNameUnique']}
-              errorMessages={['Palette name is required', 'Palette name alredy used']}
-            />
-            <Button variant='contained' type='submit' color='primary'>
-              Save palette
-            </Button>
-          </ValidatorForm>
-          {/* <Button variant='contained' color='primary' onClick={saveCurrentPalette}>
-            Save palette
-          </Button> */}
-        </Toolbar>
-      </AppBar>
+      <CustomPaletteNavbar
+        open={open}
+        newPaletteName={newPaletteName}
+        handlePaletteNameChange={handlePaletteNameChange}
+        saveCurrentPalette={saveCurrentPalette}
+        handleDrawerOpen={handleDrawerOpen}
+      />
       <Drawer
         className={classes.drawer}
         variant='persistent'
@@ -237,34 +139,24 @@ const CustomPalette = ({ savePalette, palettes, history }) => {
           </IconButton>
         </div>
         <Divider />
-        <Typography variant='h4'>Design your palette</Typography>
-        <div>
-          <Button variant='contained' color='secondary' onClick={clearPalette}>
-            Clear palette
-          </Button>
-        </div>
-        <ChromePicker color={newColor} onChange={handleColorChange} />
-        <ValidatorForm onSubmit={addNewColor}>
-          <TextValidator
-            value={newColorName}
-            onChange={handleColorNameChange}
-            validators={['required', 'isColorNameUnique', 'isColorUnique']}
-            errorMessages={['Color name required', 'Color name already used', 'Color alrady in the palette']}
+        <div className={classes.drawerContainer}>
+          <Typography variant='h4'>Create color</Typography>
+          <div>
+            <Button variant='contained' color='secondary' onClick={clearPalette}>
+              Clear palette
+            </Button>
+          </div>
+          <ColorPickerForm
+            paletteColors={paletteColors}
+            clearPalette={clearPalette}
+            handleColorChange={handleColorChange}
+            newColor={newColor}
+            addNewColor={addNewColor}
+            newColorName={newColorName}
+            handleColorNameChange={handleColorNameChange}
           />
-          <Button
-            type='submit'
-            variant='contained'
-            color='primary'
-            disabled={paletteColors.length >= MAX_PALETTE_SIZE}
-            style={{
-              backgroundColor: paletteColors.length < MAX_PALETTE_SIZE ? newColor.hex : 'grey',
-              marginTop: '10px',
-            }}
-          >
-            Add color
-          </Button>
-        </ValidatorForm>
-        <Divider />
+          <Divider />
+        </div>
       </Drawer>
       <main
         className={clsx(classes.content, {
@@ -278,4 +170,4 @@ const CustomPalette = ({ savePalette, palettes, history }) => {
   );
 };
 
-export default CustomPalette;
+export default withStyles(styles, { withThem: true })(CustomPalette);
