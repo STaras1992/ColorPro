@@ -1,4 +1,5 @@
 import chroma from 'chroma-js';
+import mediaSize from '../../constants/mediaSizes.js';
 
 const styles = {
   root: {
@@ -10,9 +11,12 @@ const styles = {
     margin: '0 auto',
     marginBottom: '-4.5px',
     '&:hover svg': {
-      //color: (props) => (chroma(props.color).luminance() < 0.3 ? 'rgba(0,0,0,0.7)' : 'white'),
       transform: 'scale(1.4)',
     },
+    [mediaSize.down('lg')]: { width: '25%', height: '20%' },
+    [mediaSize.down('md')]: { width: '25%', height: '20%' },
+    [mediaSize.down('sm')]: { width: '50%', height: '10%' },
+    [mediaSize.down('xs')]: { width: '100%', height: '5%' },
   },
   boxContent: {
     display: 'flex',

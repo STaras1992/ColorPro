@@ -19,11 +19,11 @@ import { ValidatorForm } from 'react-material-ui-form-validator';
 import styles from './styles/CustomPaletteStyles.js';
 
 const CustomPalette = ({ classes, savePalette, palettes, history }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
   const [newColor, setNewColor] = useState('');
   const [newColorName, setNewColorName] = useState('');
   const [newPaletteName, setNewPaletteName] = useState('');
-  const [paletteColors, setPaletteColors] = useState([]);
+  const [paletteColors, setPaletteColors] = useState(palettes[1].colors);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -164,7 +164,14 @@ const CustomPalette = ({ classes, savePalette, palettes, history }) => {
         })}
       >
         <div className={classes.drawerHeader} />
-        <DraggableColorList paletteColors={paletteColors} removeColor={removeColor} axis='xy' onSortEnd={onSortEnd} />;
+        <DraggableColorList
+          paletteColors={paletteColors}
+          removeColor={removeColor}
+          axis='xy'
+          onSortEnd={onSortEnd}
+          distance={10}
+        />
+        ;
       </main>
     </div>
   );

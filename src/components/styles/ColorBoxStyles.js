@@ -1,15 +1,28 @@
 import chroma from 'chroma-js';
+import mediaSize from '../../constants/mediaSizes.js';
 
 const styles = {
   colorBox: {
     background: (props) => props.color,
-    height: (props) => (props.isSingleColor ? '50%' : '25%'),
+    height: (props) => (!props.isSingleColor ? '25%' : '50%'),
     width: '20%',
     display: 'inline-block',
     position: 'relative',
     margin: '0 auto',
     marginBottom: '-4.5px',
     '&:hover button': { opacity: '1', transition: '0.5s' },
+    [mediaSize.down('lg')]: {
+      width: (props) => (!props.isSingleColor ? '25%' : '20%'),
+      height: (props) => (!props.isSingleColor ? '20%' : '50%'),
+    },
+    [mediaSize.down('md')]: {
+      width: (props) => (!props.isSingleColor ? '50%' : '50%'),
+      height: (props) => (!props.isSingleColor ? '10%' : '20%'),
+    },
+    [mediaSize.down('xs')]: {
+      width: (props) => (!props.isSingleColor ? '100%' : '100%'),
+      height: (props) => (!props.isSingleColor ? '5%' : '10%'),
+    },
   },
 
   boxContent: {
@@ -71,7 +84,7 @@ const styles = {
 
   copyOverlayShow: {
     opacity: '1',
-    transform: 'scale(10)',
+    transform: 'scale(50)',
     zIndex: '10',
     position: 'absolute',
   },
@@ -91,6 +104,7 @@ const styles = {
     justifyContent: 'center',
     transform: 'scale(0.1)',
     textTransform: 'uppercase',
+    [mediaSize.down('xs')]: { fontSize: '2rem' },
   },
 
   copyOverlayMessageShow: {

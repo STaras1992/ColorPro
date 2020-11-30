@@ -1,3 +1,5 @@
+import mediaSize from '../../constants/mediaSizes.js';
+
 const styles = {
   palette: {
     height: '100vh',
@@ -17,6 +19,14 @@ const styles = {
     position: 'relative',
     margin: '0 auto',
     marginBottom: '-4.5px',
+    [mediaSize.down('md')]: {
+      height: '20%',
+      width: '50%',
+    },
+    [mediaSize.down('xs')]: {
+      height: '10%',
+      width: '100%',
+    },
   },
 
   backButton: {
