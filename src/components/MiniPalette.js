@@ -6,6 +6,7 @@ import { withStyles } from '@material-ui/styles';
 import styles from './styles/MiniPaletteStyles.js';
 
 const MiniPalette = ({ classes, paletteName, colors, handleClick, id, deletePalette }) => {
+  console.log('MINI PALETTE RENDER');
   const miniColorBoxes = colors.map((color) => (
     <div key={color.name} className={classes.miniColorBox} style={{ backgroundColor: color.color }}></div>
   ));

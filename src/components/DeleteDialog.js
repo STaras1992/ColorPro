@@ -16,7 +16,9 @@ const DeleteDialog = ({ open, handleDelete }) => {
         <DialogTitle id='delete-dialog'>Delete palette?</DialogTitle>
         <DialogContent>
           <DialogContentText id='delete-dialog-description'>
-            <Typography variant='h6'>Are you sure you want to delete selected palette?</Typography>
+            <Typography component='span' variant='h6'>
+              Are you sure you want to delete selected palette?
+            </Typography>
           </DialogContentText>
         </DialogContent>
         <DialogActions>

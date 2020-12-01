@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import MiniPalette from './MiniPalette.js';
 import DeleteDialog from './DeleteDialog.js';
 
@@ -25,15 +25,6 @@ const PaletteList = ({ paletts, classes, history, deletePalette }) => {
     setShowDeleteDialog(false);
     if (accept) deletePalette(deleteId);
   };
-
-  // const acceptDelete = () => {
-  //   setShowDeleteDialog(false);
-  //   deletePalette(deleteId);
-  // };
-
-  // const rejectDelete = () => {
-  //   setShowDeleteDialog(false);
-  // };
 
   const miniPallets = paletts.map((palette) => (
     <CSSTransition key={palette.id} classNames='fade' timeout={500}>
