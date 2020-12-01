@@ -1,12 +1,13 @@
-import React, { useEffect, useState } from 'react';
-
-import Button from '@material-ui/core/Button';
+/*global_imports*/
 import { ChromePicker } from 'react-color';
-import { withStyles } from '@material-ui/core/styles';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-
-import { MAX_PALETTE_SIZE } from '../constants/measures.js';
-import styles from './styles/ColorPickerFormStyles.js';
+import React from 'react';
+/*material-ui imports*/
+import Button from '@material-ui/core/Button';
+import { withStyles } from '@material-ui/core/styles';
+/*my imports*/
+import { MAX_PALETTE_SIZE } from '../../constants/measures.js';
+import styles from './ColorPickerFormStyles.js';
 
 const ColorPickerForm = ({
   classes,

@@ -1,21 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import chroma from 'chroma-js';
+/*global_imports*/
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+/*materia-ui imports*/
 import { withStyles } from '@material-ui/styles';
-import styles from './styles/ColorBoxStyles.js';
+/*my imports*/
+import styles from './ColorBoxStyles.js';
 
 const ColorBox = ({ color, colorName, paletteId, colorId, isSingleColor, classes }) => {
   const [isCopied, setIsCopied] = useState(false);
-  const [isShowing, setIsShowing] = useState(false);
 
   const handleCopy = () => {
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2000);
   };
-
-  const brightness = chroma(color).luminance(); //1-bright, 0-dark
-  console.log(brightness);
 
   return (
     <div className={classes.colorBox}>

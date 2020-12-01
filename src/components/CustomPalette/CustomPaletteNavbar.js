@@ -1,17 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { withStyles } from '@material-ui/core/styles';
+/*global_imports*/
+import React from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import CssBaseline from '@material-ui/core/CssBaseline';
+/*material-ui imports*/
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import Button from '@material-ui/core/Button';
-
+import CssBaseline from '@material-ui/core/CssBaseline';
+import { withStyles } from '@material-ui/core/styles';
+/*my imports*/
 import PaletteNameDialog from './PaletteNameDialog.js';
-
-import styles from './styles/CustomPaletteNavbarStyles.js';
+import styles from './CustomPaletteNavbarStyles.js';
 
 const CustomPaletteNavbar = ({
   classes,

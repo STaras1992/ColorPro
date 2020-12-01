@@ -9,7 +9,7 @@ const styles = {
     display: 'inline-block',
     position: 'relative',
     margin: '0 auto',
-    marginBottom: '-4.5px',
+    marginBottom: '-6px',
     '&:hover svg': {
       transform: 'scale(1.4)',
     },
@@ -29,7 +29,7 @@ const styles = {
     color: (props) => (chroma(props.color).luminance() > 0.3 ? 'rgba(0,0,0,0.7)' : 'white'),
     letterSpacing: '1px',
     textTransform: 'uppercase',
-    fontSize: '12px',
+    fontSize: '14px',
   },
   deleteIcon: {
     color: (props) => (chroma(props.color).luminance() > 0.3 ? 'rgba(0,0,0,0.7)' : 'white'),

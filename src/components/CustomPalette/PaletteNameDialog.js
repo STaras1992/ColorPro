@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Button from '@material-ui/core/Button';
+/*global_imports*/
+import React, { useState } from 'react';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
-
+/*material-ui imports*/
+import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
-//import styles from './styles/PaletteNameDialogStyles.js';
+/*my imports*/
 
 const PaletteNameDialog = ({ saveCurrentPalette, newPaletteName, handlePaletteNameChange }) => {
   const [open, setOpen] = useState(false);

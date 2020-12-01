@@ -1,36 +1,38 @@
-import React, { useState, useEffect } from 'react';
+/*global_imports*/
+import React, { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-
-import Palette from './components/Palette.js';
-import PaletteList from './components/PaletteList.js';
-import SingleColorPalette from './components/SingleColorPalette.js';
-import CustomPalette from './components/CustomPalette.js';
-import Page from './components/Page.js';
-
+/*my imports*/
+import Palette from './components/Palette/Palette.js';
+import PaletteList from './components/PalettesList/PalettesList.js';
+import SingleColorPalette from './components/SingleColorPalette/SingleColorPalette.js';
+import CustomPalette from './components/CustomPalette/CustomPalette.js';
+import Page from './components/Common/Page.js';
 import seedColors from './utills/seedColors.js';
 import { generatePalette } from './utills/colorHelpers.js';
-import './App.css';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 const App = ({ location }) => {
   const [palettes, setPalettes] = useState(seedColors);
 
+  // check if palette exist in storage
   const findPalette = (id) => {
     return palettes.find((palette) => {
       return palette.id === id;
     });
   };
 
+  //save palette to storage
   const savePalette = (newPalette) => {
     setPalettes([...palettes, newPalette]);
   };
 
+  /*remove palette with current id from storage,if exist */
   const deletePalette = (id) => {
     let tempPalettes = [...palettes];
     tempPalettes = tempPalettes.filter((p) => p.id !== id);
     setPalettes(tempPalettes);
   };
 
+  //render
   return (
     // <Route
     //   render={({ location }) => (

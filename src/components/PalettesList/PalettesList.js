@@ -1,12 +1,13 @@
-import React, { useState, useMemo } from 'react';
-import MiniPalette from './MiniPalette.js';
-import DeleteDialog from './DeleteDialog.js';
-
-import { withStyles } from '@material-ui/styles';
+/*global_imports*/
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
-
-import styles from './styles/PaletteListStyles.js';
+/*material-ui imports*/
+import { withStyles } from '@material-ui/styles';
+/*my imports*/
+import MiniPalette from './MiniPalette.js';
+import DeleteDialog from './DeleteDialog.js';
+import styles from './PalettesListStyles.js';
 
 const PaletteList = ({ paletts, classes, history, deletePalette }) => {
   const [showDeleteDialog, setShowDeleteDialog] = useState(false);

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withStyles } from '@material-ui/styles';
 
-import styles from './styles/PageStyles.js';
+import styles from './PageStyles.js';
 
 /*Wrapper for route animation */
 

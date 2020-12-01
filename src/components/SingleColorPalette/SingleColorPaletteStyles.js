@@ -9,6 +9,7 @@ const styles = {
 
   paletteColors: {
     height: '90vh',
+    marginBottom: '-2px',
   },
 
   goBackBox: {

@@ -1,12 +1,13 @@
+/*global_imports*/
 import React from 'react';
+/*material-ui imports*/
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { withStyles } from '@material-ui/styles';
-
-import styles from './styles/MiniPaletteStyles.js';
+/*my imports*/
+import styles from './MiniPaletteStyles.js';
 
 const MiniPalette = ({ classes, paletteName, colors, handleClick, id, deletePalette }) => {
-  console.log('MINI PALETTE RENDER');
   const miniColorBoxes = colors.map((color) => (
     <div key={color.name} className={classes.miniColorBox} style={{ backgroundColor: color.color }}></div>
   ));

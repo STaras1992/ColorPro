@@ -17,6 +17,7 @@ const styles = {
     alignItems: 'flex-start',
     overflow: 'scroll',
   },
+
   container: {
     width: '55%',
     display: 'flex',
@@ -50,7 +51,7 @@ const styles = {
   },
   createNewLink: {
     fontSize: '1.5rem',
-    color: 'white',
+    color: 'silver',
   },
 };
 

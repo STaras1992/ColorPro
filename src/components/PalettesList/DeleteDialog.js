@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+/*global_imports*/
+import React from 'react';
+/*material-ui imports*/
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+/*my imports*/
 
 const DeleteDialog = ({ open, handleDelete }) => {
   console.log('delete dialog');
@@ -22,7 +24,7 @@ const DeleteDialog = ({ open, handleDelete }) => {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button variant='contained' color='primary' onClick={() => handleDelete(false)} color='primary'>
+          <Button variant='contained' color='primary' onClick={() => handleDelete(false)}>
             Cancel
           </Button>
           <Button variant='contained' onClick={() => handleDelete(true)} color='primary' autoFocus>

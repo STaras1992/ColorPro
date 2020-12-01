@@ -1,6 +1,9 @@
+/*global_imports*/
 import React from 'react';
+/*materia-ui imports */
 import { withStyles } from '@material-ui/styles';
-import styles from './styles/FooterStyles.js';
+/*my imports*/
+import styles from './FooterStyles.js';
 
 const Footer = ({ paletteName, classes }) => {
   return (

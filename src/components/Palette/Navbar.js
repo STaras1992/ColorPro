@@ -1,14 +1,16 @@
+/*global_imports*/
 import React from 'react';
 import Slider from 'rc-slider';
+import { Link } from 'react-router-dom';
+import 'rc-slider/assets/index.css';
+/*material-ui imports*/
+import WbSunnyIcon from '@material-ui/icons/WbSunny';
 import Select from '@material-ui/core/Select';
 import MenuItem from '@material-ui/core/MenuItem';
-import { Link } from 'react-router-dom';
 import { withStyles } from '@material-ui/styles';
-
-import { HEX, RGB, RGBA } from '../constants/formats.js';
-
-import styles from './styles/NavbarStyles.js';
-import 'rc-slider/assets/index.css';
+/*my imports*/
+import { HEX, RGB, RGBA } from '../../constants/formats.js';
+import styles from './NavbarStyles.js';
 
 const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorPalette, classes }) => {
   return (
@@ -20,7 +22,10 @@ const Navbar = ({ sliderLevel, updateLevel, format, updateFormat, isSingleColorP
       </div>
       {!isSingleColorPalette && (
         <div>
-          <span> Level:{sliderLevel} </span>
+          <span className={classes.brightnessIcon}>
+            <WbSunnyIcon />
+          </span>
+          {/* <span> Level:{sliderLevel} </span> */}
           <div className={classes.slider}>
             <Slider
               defaultValue={sliderLevel}

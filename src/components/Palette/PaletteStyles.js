@@ -6,6 +6,8 @@ const styles = {
   },
 
   paletteColors: {
+    backgroundColor: 'white',
+    marginBottom: '-2px',
     height: '90vh',
   },
 };

@@ -1,22 +1,21 @@
+/*global_imports*/
 import React, { useEffect, useState } from 'react';
-
 import clsx from 'clsx';
-import { withStyles } from '@material-ui/core/styles';
+import { arrayMove } from 'react-sortable-hoc';
+import { ValidatorForm } from 'react-material-ui-form-validator';
+/*material-ui*/
 import Drawer from '@material-ui/core/Drawer';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import Button from '@material-ui/core/Button';
-
+import { withStyles } from '@material-ui/core/styles';
+/*my imports*/
 import DraggableColorList from './DraggableColorList.js';
 import CustomPaletteNavbar from './CustomPaletteNavbar.js';
 import ColorPickerForm from './ColorPickerForm.js';
-
-import { arrayMove } from 'react-sortable-hoc';
-import { ValidatorForm } from 'react-material-ui-form-validator';
-
-import styles from './styles/CustomPaletteStyles.js';
+import styles from './CustomPaletteStyles.js';
 
 const CustomPalette = ({ classes, savePalette, palettes, history }) => {
   const [open, setOpen] = useState(true);
@@ -134,8 +133,13 @@ const CustomPalette = ({ classes, savePalette, palettes, history }) => {
         }}
       >
         <div className={classes.drawerHeader}>
+          <div className={classes.drawerTitle}>
+            <Typography variant='h4' color='secondary'>
+              Pallete design
+            </Typography>
+          </div>
           <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon />
+            <ChevronLeftIcon style={{ fontSize: '2.5rem' }} />
           </IconButton>
         </div>
         <Divider />

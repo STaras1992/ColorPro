@@ -13,6 +13,7 @@ const styles = (theme) => ({
     [mediaSize.down('sm')]: { width: DRAWER_WIDTH * 0.5 },
   },
   drawerPaper: {
+    backgroundColor: '#bfe4e6',
     width: DRAWER_WIDTH,
     display: 'flex',
     alignItems: 'center',
@@ -20,15 +21,19 @@ const styles = (theme) => ({
     [mediaSize.down('sm')]: { width: DRAWER_WIDTH * 0.5 },
   },
   drawerHeader: {
+    backgroundColor: '#394bad',
     display: 'flex',
     alignItems: 'center',
     width: '100%',
     padding: '0 8px',
-    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
-    // [mediaSize.down('md')]: { width: '75%' },
-    // [mediaSize.down('sm')]: { width: '50%' },
+  },
+  drawerTitle: {
+    color: 'white',
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
   },
 
   drawerContainer: {
@@ -43,7 +48,7 @@ const styles = (theme) => ({
   content: {
     flexGrow: 1,
     height: '90vh',
-    padding: theme.spacing(1),
+    padding: theme.spacing(0),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,

@@ -1,14 +1,16 @@
+/*global_imports*/
 import React, { useEffect, useState } from 'react';
-import Navbar from './Navbar.js';
-import Footer from './Footer.js';
-import ColorBox from './ColorBox';
-import Snackbar from '@material-ui/core/Snackbar';
 import { Link } from 'react-router-dom';
+/*material-ui imports*/
+import Snackbar from '@material-ui/core/Snackbar';
 import { withStyles } from '@material-ui/styles';
-
-import styles from './styles/SingleColorPaletteStyles.js';
-import { getShades } from '../utills/colorHelpers.js';
-import { HEX, RGB, RGBA } from '../constants/formats.js';
+/*my imports*/
+import Navbar from '../Palette/Navbar.js';
+import Footer from '../Palette/Footer.js';
+import ColorBox from '../ColorBox/ColorBox.js';
+import { getShades } from '../../utills/colorHelpers.js';
+import { HEX, RGB, RGBA } from '../../constants/formats.js';
+import styles from './SingleColorPaletteStyles.js';
 
 const SingleColorPalette = ({ colorId, palette, classes }) => {
   const [format, setFormat] = useState(HEX);
@@ -16,7 +18,7 @@ const SingleColorPalette = ({ colorId, palette, classes }) => {
 
   const shades = getShades(palette, colorId);
   const colorBoxes = shades.map((color) => (
-    <ColorBox key={color.name} colorName={color.name} color={color.hex} isSingleColor={true} />
+    <ColorBox key={color.name} colorName={color.name} color={color[format]} isSingleColor={true} />
   ));
 
   const updateColorFormat = (event) => {
