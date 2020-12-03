@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ColorPro/static/css/main.c5948a16.chunk.css",
-    "main.js": "/ColorPro/static/js/main.9cd93223.chunk.js",
-    "main.js.map": "/ColorPro/static/js/main.9cd93223.chunk.js.map",
+    "main.js": "/ColorPro/static/js/main.eb7217f8.chunk.js",
+    "main.js.map": "/ColorPro/static/js/main.eb7217f8.chunk.js.map",
     "runtime-main.js": "/ColorPro/static/js/runtime-main.6d9ca85c.js",
     "runtime-main.js.map": "/ColorPro/static/js/runtime-main.6d9ca85c.js.map",
     "static/css/2.7fe95f8e.chunk.css": "/ColorPro/static/css/2.7fe95f8e.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.7fe95f8e.chunk.css",
     "static/js/2.0eeee3e5.chunk.js",
     "static/css/main.c5948a16.chunk.css",
-    "static/js/main.9cd93223.chunk.js"
+    "static/js/main.eb7217f8.chunk.js"
   ]
 }
