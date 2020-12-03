@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/ColorPro/static/css/main.c5948a16.chunk.css",
+    "main.js": "/ColorPro/static/js/main.cbc9c572.chunk.js",
+    "main.js.map": "/ColorPro/static/js/main.cbc9c572.chunk.js.map",
+    "runtime-main.js": "/ColorPro/static/js/runtime-main.6d9ca85c.js",
+    "runtime-main.js.map": "/ColorPro/static/js/runtime-main.6d9ca85c.js.map",
+    "static/css/2.7fe95f8e.chunk.css": "/ColorPro/static/css/2.7fe95f8e.chunk.css",
+    "static/js/2.0eeee3e5.chunk.js": "/ColorPro/static/js/2.0eeee3e5.chunk.js",
+    "static/js/2.0eeee3e5.chunk.js.map": "/ColorPro/static/js/2.0eeee3e5.chunk.js.map",
+    "index.html": "/ColorPro/index.html",
+    "static/css/2.7fe95f8e.chunk.css.map": "/ColorPro/static/css/2.7fe95f8e.chunk.css.map",
+    "static/css/main.c5948a16.chunk.css.map": "/ColorPro/static/css/main.c5948a16.chunk.css.map",
+    "static/js/2.0eeee3e5.chunk.js.LICENSE.txt": "/ColorPro/static/js/2.0eeee3e5.chunk.js.LICENSE.txt",
+    "static/media/back4.62baa04d.svg": "/ColorPro/static/media/back4.62baa04d.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.6d9ca85c.js",
+    "static/css/2.7fe95f8e.chunk.css",
+    "static/js/2.0eeee3e5.chunk.js",
+    "static/css/main.c5948a16.chunk.css",
+    "static/js/main.cbc9c572.chunk.js"
+  ]
+}
